@@ -7,25 +7,28 @@ window.addEventListener('load', function () {
     }, 333);
 });
 
-// Header Sticky
 window.addEventListener('scroll', function () {
-    let stickytop = document.querySelector('#header.sticky-top .bg-transparent');
+    let stickytop = document.querySelector('#header.sticky-top');
     let stickytopslide = document.querySelector('#header.sticky-top-slide');
 
-    if (window.scrollY > 1) {
-        stickytop.classList.add('sticky-on-top');
-        stickytop.querySelector('.logo img').src = stickytop.querySelector('.logo img').dataset.stickyLogo;
-    } else {
-        stickytop.classList.remove('sticky-on-top');
-        stickytop.querySelector('.logo img').src = stickytop.querySelector('.logo img').dataset.defaultLogo;
+    if (stickytop && stickytop.querySelector('.logo img')) {
+        if (window.scrollY > 1) {
+            stickytop.classList.add('sticky-on-top');
+            stickytop.querySelector('.logo img').src = stickytop.querySelector('.logo img').dataset.stickyLogo;
+        } else {
+            stickytop.classList.remove('sticky-on-top');
+            stickytop.querySelector('.logo img').src = stickytop.querySelector('.logo img').dataset.defaultLogo;
+        }
     }
 
-    if (window.scrollY > 180) {
-        stickytopslide.querySelector('.primary-menu').classList.add('sticky-on');
-        stickytopslide.querySelector('.logo img').src = stickytopslide.querySelector('.logo img').dataset.stickyLogo;
-    } else {
-        stickytopslide.querySelector('.primary-menu').classList.remove('sticky-on');
-        stickytopslide.querySelector('.logo img').src = stickytopslide.querySelector('.logo img').dataset.defaultLogo;
+    if (stickytopslide && stickytopslide.querySelector('.logo img')) {
+        if (window.scrollY > 180) {
+            stickytopslide.querySelector('.primary-menu').classList.add('sticky-on');
+            stickytopslide.querySelector('.logo img').src = stickytopslide.querySelector('.logo img').dataset.stickyLogo;
+        } else {
+            stickytopslide.querySelector('.primary-menu').classList.remove('sticky-on');
+            stickytopslide.querySelector('.logo img').src = stickytopslide.querySelector('.logo img').dataset.defaultLogo;
+        }
     }
 });
 
@@ -85,40 +88,6 @@ document.querySelectorAll(".navbar-side-open [data-bs-toggle='collapse'], .navba
         document.querySelector(this.dataset.bsTarget).classList.toggle('show');
     });
 });
-
-/*------------------------------------
-    Isotope Portfolio Filter JavaScript
--------------------------------------- */
-// window.addEventListener('load', function () {
-//     document.querySelectorAll('.portfolio-filter').forEach(function (element) {
-//         imagesLoaded(element, function () {
-//             var rtlVal = document.documentElement.getAttribute('dir') !== 'rtl';
-
-//             var iso = new Isotope(element, {
-//                 layoutMode: 'masonry',
-//                 originLeft: rtlVal,
-//             });
-
-//             document.querySelectorAll('.portfolio-menu a').forEach(function (link) {
-//                 link.addEventListener('click', function (e) {
-//                     e.preventDefault();
-
-//                     // Remove active class from all
-//                     document.querySelectorAll('.portfolio-menu a').forEach(function (el) {
-//                         el.classList.remove('active');
-//                     });
-
-//                     // Add active to clicked
-//                     link.classList.add('active');
-
-//                     // Filter portfolio
-//                     var filterValue = link.getAttribute('data-filter');
-//                     iso.arrange({ filter: filterValue });
-//                 });
-//             });
-//         });
-//     });
-// });
 
 /*------------------------------------
     Typed
